@@ -29,7 +29,7 @@ export default function App() {
 
       {isLoading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator color="#121212" size={55} />
+          <ActivityIndicator color="#121212" size={45} />
           <Text style={styles.loadingText}>Carregando Filmes...⌛</Text>
         </View>
       ) : (
