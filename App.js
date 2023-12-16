@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, StatusBar, ActivityIndicator } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, StyleSheet, FlatList, StatusBar, ActivityIndicator, Animated } from 'react-native';
 
 import api from './src/services/api';
 import Filmes from './src/components/Filmes';
@@ -7,6 +7,7 @@ import Filmes from './src/components/Filmes';
 export default function App() {
   const [filmes, setFilmes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const animatedWidth = useRef(new Animated.Value(200)).current
 
   useEffect(() => {
     async function loadFilmes() {
@@ -23,6 +24,14 @@ export default function App() {
     loadFilmes();
   }, []);
 
+  useEffect(() => {
+    Animated.timing(animatedWidth, {
+      toValue: 500,
+      duration: 2500,
+      useNativeDriver: false
+    }).start()
+  }, [])
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
@@ -30,7 +39,20 @@ export default function App() {
       {isLoading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator color="#121212" size={45} />
-          <Text style={styles.loadingText}>Carregando Filmes...⌛</Text>
+
+          <Animated.View
+            style={{
+              width: animatedWidth,
+              height: 60,
+              backgroundColor: "#d910e0",
+              justifyContent: 'center',
+              alignItems: 'center',
+
+            }}
+          >
+
+            <Text style={styles.loadingText}>Carregando Filmes...⌛</Text>
+          </Animated.View>
         </View>
       ) : (
         <FlatList
