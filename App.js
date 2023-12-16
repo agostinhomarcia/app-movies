@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, FlatList, StatusBar, ActivityIndicator } from 'react-native';
 
 import api from './src/services/api';
 import Filmes from './src/components/Filmes';
@@ -29,6 +29,7 @@ export default function App() {
 
       {isLoading ? (
         <View style={styles.loadingContainer}>
+          <ActivityIndicator color="#121212" size={55} />
           <Text style={styles.loadingText}>Carregando Filmes...⌛</Text>
         </View>
       ) : (
@@ -56,5 +57,6 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginTop: 10,
   },
 });
