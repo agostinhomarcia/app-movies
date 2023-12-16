@@ -1,11 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, FlatList, StatusBar } from 'react-native';
+
+import api from './src/services/api';
+import Filmes from './src/components/Filmes';
 
 export default function App() {
+  const [filmes, setFilmes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadFilmes() {
+      try {
+        const response = await api.get('r-api/?api=filmes');
+        setFilmes(response.data);
+      } catch (error) {
+        console.error('Erro ao carregar os dados:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadFilmes();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Carregando Filmes...⌛</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={filmes}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => <Filmes data={item} />}
+        />
+      )}
+
     </View>
   );
 }
@@ -13,8 +46,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    marginTop: StatusBar.currentHeight || 15,
+  },
+  loadingContainer: {
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
