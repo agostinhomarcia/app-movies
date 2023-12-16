@@ -9,17 +9,17 @@
 <h1 align="center"></h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/agostinhomarcia/teste-rick-and-morty?color=d910e0">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/agostinhomarcia/app-movies?color=d910e0">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/agostinhomarcia/teste-rick-and-morty?color=d910e0">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/agostinhomarcia/app-movies?color=d910e0">
 
-  <img alt="License" src="https://img.shields.io/github/license/agostinhomarcia/teste-rick-and-morty?color=d910e0">
+  <img alt="License" src="https://img.shields.io/github/license/agostinhomarcia/app-movies?color=d910e0">
 
-   <img alt="Github issues" src="https://img.shields.io/github/issues/agostinhomarcia/teste-rick-and-morty?color=d910e0" />
+   <img alt="Github issues" src="https://img.shields.io/github/issues/agostinhomarcia/app-movies?color=d910e0" />
 
-   <img alt="Github forks" src="https://img.shields.io/github/forks/agostinhomarcia/teste-rick-and-morty?color=d910e0" />
+   <img alt="Github forks" src="https://img.shields.io/github/forks/agostinhomarcia/app-movies?color=d910e0" />
 
-   <img alt="Github stars" src="https://img.shields.io/github/stars/agostinhomarcia/teste-rick-and-morty?color=d910e0" /> 
+   <img alt="Github stars" src="https://img.shields.io/github/stars/agostinhomarcia/app-movies?color=d910e0" /> 
 </p>
 
 <p align="center">
@@ -81,9 +81,9 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/agostinhomarcia/teste-rick-and-morty.git
+$ git clone https://github.com/agostinhomarcia/app-movies.git
 # Access
-$ cd teste-rick-and-morty
+$ cd app-movies
 # Install dependencies
 $ expo install
 # Run the project
